@@ -7,8 +7,6 @@ namespace MealPlanner.Controller
 {
     public class Ingredient: IIngredient
     {
-        public string Name { get; }
-        public string Type { get; }
 
         public Ingredient(string name, string type)
         {
@@ -28,7 +26,7 @@ namespace MealPlanner.Controller
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name?.ToLowerInvariant(), Type?.ToLowerInvariant());
+            return HashCode.Combine(Name.ToLowerInvariant(), Type.ToLowerInvariant());
         }
     }
 }

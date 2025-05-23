@@ -30,7 +30,18 @@ namespace MealPlanner.Model
         /// <param name="recipeFiles">Array of file paths</param>
         public void LoadRecipeFiles(string[] recipeFiles)
         {
-            //Implement Me
+            foreach (string file in recipeFiles)
+            {
+                try
+                {
+                    IRecipe recipe = RecipeParser.Parse(file);
+                    recipeBook.Add(recipe);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error loading recipe from " + file + ": " + ex.Message);
+                }
+            }
         }
 
         /// <summary>
@@ -52,7 +63,7 @@ namespace MealPlanner.Model
                     break;
                 }
             }
-            
+
             if (selected == null)
                 return "Recipe not found.";
 
@@ -65,7 +76,7 @@ namespace MealPlanner.Model
                 {
                     if (have == 0)
                         return "Missing ingredient: " + ingredient.Name;
-         
+
                     return "Not enough " + ingredient.Name +
                            " (need " + need + ", have " + have + ")";
                 }
@@ -82,5 +93,12 @@ namespace MealPlanner.Model
                 return "Cooking '" + selected.Name + "' failed. Ingredients burned...";
 
         }
+        public void LoadRecipeFiles(string recipeFiles)
+        {
+            string[] files = recipeFiles.Split(';');
+            LoadRecipeFiles(files);
+        }
+
+        
     }
 }
