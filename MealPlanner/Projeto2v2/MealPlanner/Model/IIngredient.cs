@@ -4,7 +4,7 @@ namespace MealPlanner.Model
 {
     /// <summary>
     /// Represents an ingredient used to cook a meal
-    /// Ingredients have a name and type
+    /// Ingridients have a name and type
     /// Ingredients are the same if both the Name and the type are equal
     /// </summary>
     public interface IIngredient : IEquatable<IIngredient>
