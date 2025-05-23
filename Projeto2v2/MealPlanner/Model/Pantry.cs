@@ -95,7 +95,7 @@ namespace MealPlanner.Model
         /// <param name="file">Path to the ingredients file</param>
         public void LoadIngredientsFile(string file)
         {
-            //Implement Me
+            readonly string[] lines = ReadAllLines(file);
         }
     }
 }
